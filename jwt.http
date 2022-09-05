@@ -48,6 +48,3 @@ Content-Type: application/json
 }
 
 ###
-
-GET http://localhost:5000/category/get-category
-Authorization: Bear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzBkZGMyMjZjNWFmMmUyMDYxMjM1ZGIiLCJpYXQiOjE2NjE5MTU0NTQsImV4cCI6MTY2MjAwMTg1NH0.BQ0OQgat7lVEEYpJi6SaIpeIBjtC6Ub3sn25NEDtjYs
