@@ -4,10 +4,12 @@ const path = require("path"); //để sử dụng phương thức path có sẵn
 const express = require("express"); //Framework
 const morgan = require("morgan"); //Nhận biết thông tin các Request //Nodemon : Để khi sửa thì node tự cập nhật và có Bug
 const handlebars = require("express-handlebars");
+const methodOverride = require("method-override"); //Để Thêm method PUT
 const route = require("./routes");
+var cors = require("cors");
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 //về kết nối database MongoDB
 const db = require("./config/db");
@@ -22,16 +24,22 @@ app.use(
 app.use(express.json()); //Nhận thông tin khi submit qua Body, trường hợp qua Axios, fectch,..
 app.use(express.static(path.join(__dirname, "public"))); //Để truy cập dc các file Public
 app.use(morgan("combined"));
+app.use(methodOverride("_method")); //Thêm method Put
 
 //về thiết lập thư mục views
 app.engine(
   "hbs",
   handlebars.engine({
     extname: ".hbs",
+    helpers: {
+      sum: (a, b) => a + b,
+    },
   })
 );
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resourses", "views"));
+
+app.use(cors()); //về lỗi cor proxy trong node khi hiển thị sang reactjs
 
 route(app); //về router
 

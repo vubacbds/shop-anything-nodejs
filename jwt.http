@@ -1,0 +1,39 @@
+# File test API - nhờ attention là Rest Client trên VSCode
+
+GET http://localhost:5000/api/get-product
+Authorization: Bear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzBkZGMyMjZjNWFmMmUyMDYxMjM1ZGIiLCJpYXQiOjE2NjE5MTU0NTQsImV4cCI6MTY2MjAwMTg1NH0.BQ0OQgat7lVEEYpJi6SaIpeIBjtC6Ub3sn25NEDtjYs
+
+###
+
+GET http://localhost:5000/api/get-product/62fa4d3185ccf79ce82b05ec
+Authorization: Bear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzBkZGMyMjZjNWFmMmUyMDYxMjM1ZGIiLCJpYXQiOjE2NjE5MTU0NTQsImV4cCI6MTY2MjAwMTg1NH0.BQ0OQgat7lVEEYpJi6SaIpeIBjtC6Ub3sn25NEDtjYs
+
+###
+
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "bac@gmail.com",
+    "password": "6688"
+}
+
+###
+POST http://localhost:5000/signup
+Content-Type: application/json
+
+{
+    "email": "bac",
+    "password": "6688"
+}
+
+###
+POST http://localhost:5000/api/create-product
+Content-Type: application/json
+
+{
+    "title": "Áo thun nam",
+    "description": "Chất vải thoáng mát, lịch lãm không phai màu",
+    "price": 99000,
+    "image": "https://media.loveitopcdn.com/853/ao-thun-nam-cotton-tho-nau-1.jpg"
+}

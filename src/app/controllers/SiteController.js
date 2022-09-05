@@ -1,11 +1,11 @@
-const Course = require("../models/Course.js");
+const product = require("../models/product.js");
 const { mutipleMongooseToObject } = require("../../util/mongoose.js");
 
 class SiteController {
   home(req, res, next) {
     //Viết bằng Callback
-    // Course.find({}, (err, courses) => {
-    //   if (!err) res.json(courses);
+    // product.find({}, (err, products) => {
+    //   if (!err) res.json(products);
     //   else
     //     res.status(400).json({
     //       error: "Lỗi",
@@ -13,10 +13,11 @@ class SiteController {
     // });
 
     //Viết bằng Promise
-    Course.find({})
-      .then((courses) => {
+    product
+      .find({})
+      .then((products) => {
         res.render("home", {
-          courses: mutipleMongooseToObject(courses),
+          products: mutipleMongooseToObject(products),
         });
       })
       .catch((er) => next(er));
