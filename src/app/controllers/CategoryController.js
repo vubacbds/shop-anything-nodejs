@@ -1,11 +1,10 @@
-const Product = require("../models/product.js");
+const Category = require("../models/category.js");
 const { mutipleMongooseToObject } = require("../../util/mongoose.js");
 
-class ApiController {
-  //[GET] /api/get-product
-
+class CategoryController {
+  //[GET] /category/get-category
   async get(req, res, next) {
-    await Product.find({})
+    await Category.find({})
       .then((item) => {
         res.status(200).json(item);
         console.log("sản oharm______", item);
@@ -13,30 +12,19 @@ class ApiController {
       .catch((er) => next(er));
   }
 
-  //[GET] /api/get-product/:id
+  //[GET] /category/get-category/:id
   async getid(req, res, next) {
-    await Product.findOne({ _id: req.params.id })
+    await Category.findOne({ _id: req.params.id })
       .then((item) => {
         res.status(200).json(item);
       })
       .catch((er) => next(er));
   }
 
-  //[GET] /api/create-product
-  //   {
-  //     name: { type: String, maxLength: 50 },
-  //     description: { type: String, maxLength: 300 },
-  //     image: { type: String, maxLength: 300 },
-  //     slug: { type: String, slug: "name", unique: true }, //Tạo slug từ trường name,
-
+  //[POST] /category/create-category
   async create(req, res, next) {
-    // const fdata = {
-    //   name: req.body.name,
-    //   description: req.body.description,
-    //   image: req.body.image,
-    // };
-    const product = new Product(req.body);
-    await product
+    const category = new Category(req.body);
+    await category
       .save()
       .then((item) => {
         res.status(200).json(item);
@@ -50,9 +38,9 @@ class ApiController {
       });
   }
 
-  //[PUT] /api/update-product/:id
+  //[PUT] /category/update-category/:id
   async update(req, res, next) {
-    await Product.updateOne({ _id: req.params.id }, req.body)
+    await Category.updateOne({ _id: req.params.id }, req.body)
       .then((item) => {
         res.status(200).json(item);
       })
@@ -63,9 +51,9 @@ class ApiController {
       );
   }
 
-  //[DELETE] /api/delete-product/:id
+  //[DELETE] /category/delete-category/:id
   async destroy(req, res, next) {
-    await Product.deleteOne({ _id: req.params.id })
+    await Category.deleteOne({ _id: req.params.id })
       .then(() => {
         res.status(200).json({
           message: "Xóa sản phẩm thành công",
@@ -75,4 +63,4 @@ class ApiController {
   }
 }
 
-module.exports = new ApiController();
+module.exports = new CategoryController();
