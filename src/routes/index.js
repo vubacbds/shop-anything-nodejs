@@ -6,6 +6,7 @@ const apiRouter = require("./api");
 const loginRouter = require("./login");
 const signupRouter = require("./signup");
 const categoryRouter = require("./category");
+const billRouter = require("./bill");
 
 function route(app) {
   //   app.get("/", (req, res) => {
@@ -24,6 +25,7 @@ function route(app) {
   app.use("/login", loginRouter);
   app.use("/signup", signupRouter);
   app.use("/category", categoryRouter);
+  app.use("/bill", billRouter);
 }
 
 module.exports = route;
