@@ -3,13 +3,18 @@ const Product = require("../models/product.js");
 const { mutipleMongooseToObject } = require("../../util/mongoose.js");
 
 class BillController {
-  //[GET] /bill/get-all/:id
+  //[GET] /bill/get-all/:user-id/status
   async getall(req, res, next) {
-    await Product.findOne()
+    await Bill.find({})
       .populate({
-        path: "bills",
-        select: "amount total_price phone",
-        strictPopulate: false,
+        path: "products",
+        // select: "title price",
+        // strictPopulate: false,
+      })
+      .populate({
+        path: "users",
+        select: "email",
+        // strictPopulate: false,
       })
       .then((item) => {
         res.status(200).json(item);

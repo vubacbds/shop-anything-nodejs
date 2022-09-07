@@ -52,15 +52,16 @@ POST http://localhost:5000/bill/create-bill
 Content-Type: application/json
 
 {
-    "product_id": "6312baad160cb5e9a150f418",
-    "user_id": "6311c98f941617c9ab92fcfe",
     "amount": "1",
     "total_price": "99000",
     "phone": "0868609878",
     "address": "Đắk Lắk",
-    "status": "0"
+    "status": "1",
+    "products": "6312baad160cb5e9a150f418",
+    "users": "6311c98f941617c9ab92fcfe",
+
 }
 
 ###
 
-GET http://localhost:5000/bill/get-all/6312baad160cb5e9a150f418
+GET http://localhost:5000/bill/get-all
