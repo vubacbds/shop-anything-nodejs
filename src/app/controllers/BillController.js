@@ -13,7 +13,7 @@ class BillController {
       })
       .populate({
         path: "users",
-        select: "email",
+        // select: "email",
         // strictPopulate: false,
       })
       .then((item) => {

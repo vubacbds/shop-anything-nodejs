@@ -7,6 +7,7 @@ const Bill = new Schema(
   {
     amount: { type: Number },
     total_price: { type: Number },
+    name: { type: String },
     phone: { type: String },
     address: { type: String },
     status: { type: Number, default: 0 },
