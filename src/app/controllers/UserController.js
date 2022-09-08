@@ -60,6 +60,54 @@ class UserController {
       });
     }
   }
+
+  //[PUT] /user/update/:id
+  async update(req, res, next) {
+    await User.updateOne({ _id: req.params.id }, req.body)
+      .then((item) => {
+        res.status(200).json(item);
+      })
+      .catch((next) =>
+        res.status(200).json({
+          message: "Cập nhật user thất bại",
+        })
+      );
+  }
+
+  //[GET] /user/get
+  async get(req, res, next) {
+    await User.find({})
+      .then((item) => {
+        res.status(200).json(item);
+      })
+      .catch((er) => next(er));
+  }
+
+  //[PUT] /user/update-pass/:id
+  async update_pass(req, res, next) {
+    const salt = await bcrypt.genSalt(10);
+    const NewPass = await bcrypt.hash(req.body.password, salt);
+    await User.updateOne({ _id: req.params.id }, { password: NewPass })
+      .then((item) => {
+        res.status(200).json(item);
+      })
+      .catch((next) =>
+        res.status(500).json({
+          message: "Cập nhật mật khẩu thất bại",
+        })
+      );
+  }
+
+  //[DELETE] /user/delete/:id
+  async destroy(req, res, next) {
+    await User.deleteOne({ _id: req.params.id })
+      .then(() => {
+        res.status(200).json({
+          message: "Xóa tài khoản thành công",
+        });
+      })
+      .catch(next);
+  }
 }
 
 module.exports = new UserController();

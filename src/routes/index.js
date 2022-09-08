@@ -3,10 +3,9 @@ const meRouter = require("./me");
 const siteRouter = require("./site");
 const productRouter = require("./product");
 const apiRouter = require("./api");
-const loginRouter = require("./login");
-const signupRouter = require("./signup");
 const categoryRouter = require("./category");
 const billRouter = require("./bill");
+const userRouter = require("./user");
 
 function route(app) {
   //   app.get("/", (req, res) => {
@@ -22,10 +21,9 @@ function route(app) {
   app.use("/search", siteRouter);
   app.use("/product", productRouter);
   app.use("/api", apiRouter);
-  app.use("/login", loginRouter);
-  app.use("/signup", signupRouter);
   app.use("/category", categoryRouter);
   app.use("/bill", billRouter);
+  app.use("/user", userRouter);
 }
 
 module.exports = route;
