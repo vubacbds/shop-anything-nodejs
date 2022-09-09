@@ -12,6 +12,7 @@ const Product = new Schema(
     amount: { type: Number, default: 0 },
     category: { type: String },
     image: { type: String },
+    images: [],
     slug: { type: String, slug: "title", unique: true }, //Tạo slug từ trường name,
   },
   {
