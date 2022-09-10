@@ -20,6 +20,7 @@ class UserController {
   async login(req, res, next) {
     try {
       await User.findOne({ email: req.body.email })
+        .sort({ createdAt: -1 })
         .then((user) => {
           if (!user) {
             return res.status(400).json({

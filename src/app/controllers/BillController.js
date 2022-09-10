@@ -6,6 +6,7 @@ class BillController {
   //[GET] /bill/get-all/:user-id/status
   async getall(req, res, next) {
     await Bill.find({})
+      .sort({ createdAt: -1 })
       .populate({
         path: "products",
         // select: "title price",

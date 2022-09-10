@@ -5,6 +5,7 @@ class CategoryController {
   //[GET] /category/get-category
   async get(req, res, next) {
     await Category.find({})
+      .sort({ createdAt: -1 })
       .then((item) => {
         res.status(200).json(item);
         console.log("sản oharm______", item);
