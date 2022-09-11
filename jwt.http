@@ -65,3 +65,35 @@ Content-Type: application/json
 ###
 
 GET http://localhost:5000/bill/get-all
+
+###
+POST http://localhost:5000/other/create-other
+Content-Type: application/json
+
+{
+    "web_title": "SHOP",
+    "web_hotline": "0868609878",
+    "web_mail": "vubacbds@gmail.com",
+    "web_facebook": "https://fb.com/",
+    "web_youtube": "https://www.youtube.com/",
+    "web_finish": "© 2022 Copyright:  Website built on ReactJS and NodeJS platform by BAC",
+    "web_cs": "Chính sách mua hàng",
+    "web_bh": "Bảo hành",
+    "web_hd": "Hướng dẫn" 
+}
+
+###
+
+GET http://localhost:5000/other/get-other
+
+###
+PUT http://localhost:5000/other/update-other/631d9f048f553b1a6f50b9a7
+Content-Type: application/json
+
+{
+    "web_title": "SHOPS",
+    "web_hotline": "0868609878",
+    "web_mail": "vubacbds@gmail.com",
+    "web_facebook": "https://fb.com/",
+    "web_youtube": "https://www.youtube.com/"
+}

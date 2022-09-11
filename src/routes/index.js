@@ -6,6 +6,7 @@ const apiRouter = require("./api");
 const categoryRouter = require("./category");
 const billRouter = require("./bill");
 const userRouter = require("./user");
+const otherRouter = require("./other");
 
 function route(app) {
   //   app.get("/", (req, res) => {
@@ -24,6 +25,7 @@ function route(app) {
   app.use("/category", categoryRouter);
   app.use("/bill", billRouter);
   app.use("/user", userRouter);
+  app.use("/other", otherRouter);
 }
 
 module.exports = route;
