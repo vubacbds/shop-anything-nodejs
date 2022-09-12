@@ -6,7 +6,10 @@ class ApiController {
 
   async get(req, res, next) {
     await Product.find({})
-      .sort({ createdAt: -1 })
+      .sort([
+        ["ghim", "descending"],
+        ["updatedAt", "descending"],
+      ])
       .then((item) => {
         res.status(200).json(item);
         console.log("sản oharm______", item);

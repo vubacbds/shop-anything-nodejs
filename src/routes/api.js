@@ -5,7 +5,7 @@ const { authPage } = require("../app/middleware/authPage");
 const apiController = require("../app/controllers/ApiController");
 
 router.get("/get-product", apiController.get);
-router.get("/get-product/:id", authPage, apiController.getid);
+router.get("/get-product/:id", apiController.getid);
 
 router.post("/create-product", apiController.create);
 router.put("/update-product/:id", apiController.update);
