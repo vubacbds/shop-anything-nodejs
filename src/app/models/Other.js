@@ -19,6 +19,8 @@ const Other = new Schema(
     web_cs: { type: String, default: "Chính sách mua hàng" },
     web_bh: { type: String, default: "Bảo hành" },
     web_hd: { type: String, default: "Hướng dẫn" },
+    web_imageads: { type: String, default: "" },
+    web_linkads: { type: String, default: "" },
   },
   {
     timestamps: true,

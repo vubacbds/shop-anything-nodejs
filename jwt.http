@@ -79,7 +79,9 @@ Content-Type: application/json
     "web_finish": "© 2022 Copyright:  Website built on ReactJS and NodeJS platform by BAC",
     "web_cs": "Chính sách mua hàng",
     "web_bh": "Bảo hành",
-    "web_hd": "Hướng dẫn" 
+    "web_hd": "Hướng dẫn",
+    "web_linkads": "https://blog.freelancerviet.vn/5-nguyen-tac-vang-de-thiet-ke-banner-cho-website/" ,
+    "web_imageads": "https://blog.freelancerviet.vn/wp-content/uploads/2019/03/nguyen_tac_thiet_ke_banner_31.jpg" 
 }
 
 ###
