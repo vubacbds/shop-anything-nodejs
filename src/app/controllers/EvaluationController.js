@@ -2,7 +2,7 @@ const Evaluation = require("../models/Evaluation.js");
 const { mutipleMongooseToObject } = require("../../util/mongoose.js");
 
 class EvaluationController {
-  //[GET] /evaluation/get-evaluation/:product_id
+  //[GET] /evaluation/get-evaluation/:product_id/:amount  //Lấy theo số lượng
   async get(req, res, next) {
     await Evaluation.find({ products: req.params.product_id })
       .sort({ createdAt: -1 })
@@ -10,7 +10,13 @@ class EvaluationController {
         path: "users",
       })
       .then((item) => {
-        res.status(200).json(item);
+        const amountNum = parseInt(req.params.amount);
+        const newItem = item.filter((i, index) => {
+          return index >= amountNum - 1 && index < amountNum + 2;
+        });
+
+        console.log("danh gia_____+++++", newItem.length);
+        res.status(200).json(newItem);
       });
   }
 
@@ -40,6 +46,19 @@ class EvaluationController {
         });
       })
       .catch(next);
+  }
+
+  //[PUT] /evaluation/update-evaluation/:id
+  async update(req, res, next) {
+    await Evaluation.updateOne({ _id: req.params.id }, req.body)
+      .then((item) => {
+        res.status(200).json(item);
+      })
+      .catch((next) =>
+        res.status(200).json({
+          message: "Cập nhật thất bại",
+        })
+      );
   }
 }
 

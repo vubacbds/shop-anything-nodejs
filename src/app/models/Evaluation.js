@@ -8,6 +8,7 @@ const Evaluation = new Schema(
     body: { type: String },
     image: { type: String, default: "" },
     products: { type: mongoose.Schema.Types.ObjectId },
+    likes: [],
     users: {
       type: mongoose.Schema.Types.ObjectId,
       ref: User,
