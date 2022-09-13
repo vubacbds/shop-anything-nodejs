@@ -52,14 +52,13 @@ POST http://localhost:5000/bill/create-bill
 Content-Type: application/json
 
 {
-    "amount": "1",
+    "amount": "2",
     "total_price": "99000",
     "phone": "0868609878",
     "address": "Đắk Lắk",
     "status": "1",
     "products": "6312baad160cb5e9a150f418",
-    "users": "6311c98f941617c9ab92fcfe",
-
+    "users": "6311c98f941617c9ab92fcfe"
 }
 
 ###
@@ -99,3 +98,19 @@ Content-Type: application/json
     "web_facebook": "https://fb.com/",
     "web_youtube": "https://www.youtube.com/"
 }
+
+###
+
+POST http://localhost:5000/evaluation/create-evaluation
+Content-Type: application/json
+
+{
+    "body": "Đánh gía đầu tiên",
+    "image": "https://blog.freelancerviet.vn/wp-content/uploads/2019/03/nguyen_tac_thiet_ke_banner_31.jpg",
+    "products": "631b1a98ba348d830455df28",
+    "users": "6311c98f941617c9ab92fcfe"
+}
+
+###
+GET http://localhost:5000/evaluation/get-evaluation/631b1a98ba348d830455df28
+Content-Type: application/json
