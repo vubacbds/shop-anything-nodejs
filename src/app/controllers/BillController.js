@@ -27,7 +27,6 @@ class BillController {
     await Bill.find({})
       .then((item) => {
         res.status(200).json(item);
-        console.log("sản oharm______", item);
       })
       .catch((er) => next(er));
   }
@@ -48,7 +47,6 @@ class BillController {
       .save()
       .then((item) => {
         res.status(200).json(item);
-        console.log(res);
       })
       .catch((err) => {
         res.status(500).json({

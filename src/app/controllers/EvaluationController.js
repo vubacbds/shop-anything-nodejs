@@ -16,7 +16,7 @@ class EvaluationController {
         });
 
         console.log("danh gia_____+++++", newItem.length);
-        res.status(200).json(newItem);
+        res.status(200).json({ data: newItem, totalData: item.length });
       });
   }
 
