@@ -10,6 +10,8 @@ const Bill = new Schema(
     name: { type: String },
     phone: { type: String },
     address: { type: String },
+    size: { type: String, default: "" },
+    color: { type: String, default: "" },
     status: { type: Number, default: 0 },
     products:
       //Thêm cái này để nối với table Product: vì tên table khi lưu vào mongodb sẽ là chữ thường có s
