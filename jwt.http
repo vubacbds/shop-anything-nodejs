@@ -19,11 +19,15 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5000/signup
+POST http://localhost:5000/user/signup
 Content-Type: application/json
 
 {
-    "email": "bac",
+    "_id": "104314380891398686045888",
+    "name": "vxbac",
+    "email": "test11@gmail.com",
+    "phone": "0989878909",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTPB2nPBCDu7poAPxLGeng3gOJFKN6IkYV9-9B8Y2H&s",
     "password": "6688"
 }
 
