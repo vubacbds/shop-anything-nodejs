@@ -114,3 +114,24 @@ Content-Type: application/json
 ###
 GET http://localhost:5000/evaluation/get-evaluation/631b1a98ba348d830455df28/1
 Content-Type: application/json
+
+
+
+###
+POST http://localhost:5000/size/create-size
+Content-Type: application/json
+
+{
+    "name": "Size L",
+    "status": "0"
+}
+
+
+###
+POST http://localhost:5000/color/create-color
+Content-Type: application/json
+
+{
+    "name": "Màu Xanh",
+    "status": "0"
+}

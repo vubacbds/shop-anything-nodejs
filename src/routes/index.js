@@ -8,6 +8,8 @@ const billRouter = require("./bill");
 const userRouter = require("./user");
 const otherRouter = require("./other");
 const evaluationRouter = require("./evaluation");
+const sizeRouter = require("./size");
+const colorRouter = require("./color");
 
 function route(app) {
   //   app.get("/", (req, res) => {
@@ -28,6 +30,8 @@ function route(app) {
   app.use("/user", userRouter);
   app.use("/other", otherRouter);
   app.use("/evaluation", evaluationRouter);
+  app.use("/size", sizeRouter);
+  app.use("/color", colorRouter);
 }
 
 module.exports = route;
