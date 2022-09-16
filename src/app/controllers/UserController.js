@@ -84,6 +84,15 @@ class UserController {
       .catch((er) => next(er));
   }
 
+  //[GET] /user/get-email
+  async getemail(req, res, next) {
+    await User.find({ email: req.body.email })
+      .then((item) => {
+        res.status(200).json(item);
+      })
+      .catch((er) => next(er));
+  }
+
   //[PUT] /user/update-pass/:id
   async update_pass(req, res, next) {
     const salt = await bcrypt.genSalt(10);

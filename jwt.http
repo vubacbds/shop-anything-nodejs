@@ -139,3 +139,12 @@ Content-Type: application/json
     "name": "Màu Xanh",
     "status": "0"
 }
+
+
+###
+GET http://localhost:5000/user/get-email
+Content-Type: application/json
+
+{
+    "email": "bac0122000@gmail.com"
+}
