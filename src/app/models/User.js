@@ -11,7 +11,8 @@ const UserSchema = new mongoose.Schema(
     phone: { type: String, default: "" },
     address: { type: String, default: "" },
     image: { type: String, default: "" },
-    isadmin: { type: Boolean },
+    isadmin: { type: Boolean, default: false },
+    isverify: { type: Boolean, default: false },
   },
   {
     timestamps: true,

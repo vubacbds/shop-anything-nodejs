@@ -1,10 +1,11 @@
 const User = require("../models/User.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const mailer = require("../../util/mailer");
 require("dotenv").config();
 
 class UserController {
-  // [POST] /signup
+  // [POST] /user/signup
   async signup(req, res) {
     const body = req.body;
     if (!(body.email && body.password)) {
@@ -13,10 +14,38 @@ class UserController {
     const user = new User(body);
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
-    user.save().then((doc) => res.status(201).send(doc));
+
+    user.save().then(async (doc) => {
+      const salt2 = await bcrypt.genSalt(10);
+      bcrypt.hash(doc.email, salt2).then((hashEmail) => {
+        mailer.sendMail(
+          doc.email,
+          "MAIL FROM SHOP",
+          `Xác nhận email của bạn: <a href=${process.env.APP_URL}/user/verify/${doc._id}>Nhấn vào đây</a>`
+        );
+      });
+
+      res.status(201).send(doc);
+    });
   }
 
-  // [POST] /login
+  //[GET] /user/verify
+  async verify(req, res, next) {
+    await User.updateOne(
+      { _id: req.params.userid },
+      { isverify: true, address: "ok" }
+    )
+      .then((item) => {
+        res.status(200).json(item);
+      })
+      .catch((next) =>
+        res.status(200).json({
+          message: "Cập nhật user thất bại",
+        })
+      );
+  }
+
+  // [POST] /user/login
   async login(req, res, next) {
     try {
       await User.findOne({ email: req.body.email })
@@ -28,7 +57,17 @@ class UserController {
               error: { next },
             });
           }
-          if (user && bcrypt.compareSync(req.body.password, user.password)) {
+          if (!user.isverify) {
+            return res.status(400).json({
+              message: "Chưa xác minh email! Vui lòng vào email xác minh",
+              error: { next },
+            });
+          }
+          if (
+            user &&
+            bcrypt.compareSync(req.body.password, user.password) &&
+            user.isverify
+          ) {
             const token = jwt.sign(
               {
                 userId: user._id,
@@ -78,6 +117,7 @@ class UserController {
   //[GET] /user/get
   async get(req, res, next) {
     await User.find({})
+      .sort({ createdAt: -1 })
       .then((item) => {
         res.status(200).json(item);
       })

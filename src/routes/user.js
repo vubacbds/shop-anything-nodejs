@@ -11,4 +11,6 @@ router.get("/get-email", userController.getemail);
 router.put("/update-pass/:id", userController.update_pass);
 router.delete("/delete/:id", userController.destroy);
 
+router.get("/verify/:userid", userController.verify);
+
 module.exports = router;
