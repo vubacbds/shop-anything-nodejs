@@ -10,6 +10,7 @@ router.get("/get", userController.get);
 router.get("/get-email", userController.getemail);
 router.put("/update-pass/:id", userController.update_pass);
 router.delete("/delete/:id", userController.destroy);
+router.put("/resetpassword", userController.resetpassword);
 
 router.get("/verify/:userid", userController.verify);
 

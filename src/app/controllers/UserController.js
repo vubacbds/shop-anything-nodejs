@@ -16,15 +16,11 @@ class UserController {
     user.password = await bcrypt.hash(user.password, salt);
 
     user.save().then(async (doc) => {
-      const salt2 = await bcrypt.genSalt(10);
-      bcrypt.hash(doc.email, salt2).then((hashEmail) => {
-        mailer.sendMail(
-          doc.email,
-          "MAIL FROM SHOP",
-          `Xác nhận email của bạn: <a href=${process.env.APP_URL}/user/verify/${doc._id}>Nhấn vào đây</a>`
-        );
-      });
-
+      mailer.sendMail(
+        doc.email,
+        "MAIL FROM SHOP",
+        `Xác nhận email của bạn: <a href=${process.env.APP_URL}/user/verify/${doc._id}>Nhấn vào đây</a>`
+      );
       res.status(201).send(doc);
     });
   }
@@ -41,6 +37,33 @@ class UserController {
       .catch((next) =>
         res.status(200).json({
           message: "Cập nhật user thất bại",
+        })
+      );
+  }
+
+  //[POST] /user/resetpassword
+  async resetpassword(req, res, next) {
+    const indexstr = req.body.email.indexOf("@");
+    const passwordRandom = `${req.body.email.slice(
+      0,
+      indexstr - 1
+    )}$${Math.floor(Math.random() * 100000)}`;
+    mailer.sendMail(
+      req.body.email,
+      "MAIL FROM SHOP",
+      `Mật khẩu mới của bạn là: <b style="">${passwordRandom}</b> <p>Bạn cần vào tài khoản để thay đổi lại mật khẩu</p>`
+    );
+
+    const salt = await bcrypt.genSalt(10);
+    const newPassword = await bcrypt.hash(passwordRandom, salt);
+
+    await User.updateOne({ email: req.body.email }, { password: newPassword })
+      .then((item) => {
+        res.status(200).json(item);
+      })
+      .catch((next) =>
+        res.status(200).json({
+          message: "Đổi mật khẩu thất bại",
         })
       );
   }
