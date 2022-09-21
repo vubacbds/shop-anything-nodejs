@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const Product = require("./product.js");
 const User = require("./User.js");
+const Reply = require("./Reply.js");
 
 const Evaluation = new Schema(
   {
@@ -13,6 +14,12 @@ const Evaluation = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: User,
     },
+    replies: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: Reply,
+      },
+    ],
   },
   {
     timestamps: true,

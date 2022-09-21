@@ -10,6 +10,7 @@ const otherRouter = require("./other");
 const evaluationRouter = require("./evaluation");
 const sizeRouter = require("./size");
 const colorRouter = require("./color");
+const replyRouter = require("./reply");
 
 function route(app) {
   //   app.get("/", (req, res) => {
@@ -32,6 +33,7 @@ function route(app) {
   app.use("/evaluation", evaluationRouter);
   app.use("/size", sizeRouter);
   app.use("/color", colorRouter);
+  app.use("/reply", replyRouter);
 }
 
 module.exports = route;

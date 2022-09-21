@@ -148,3 +148,13 @@ Content-Type: application/json
 {
     "email": "bac0122000@gmail.com"
 }
+
+###
+POST http://localhost:5000/reply/create-reply
+Content-Type: application/json
+
+{
+   "body": "Đánh gía thứ hai",
+    "likes": ["89898782"],
+    "users": "6311c98f941617c9ab92fcfe"
+}

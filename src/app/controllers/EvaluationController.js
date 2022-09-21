@@ -9,6 +9,10 @@ class EvaluationController {
       .populate({
         path: "users",
       })
+      .populate({
+        path: "replies",
+        populate: { path: "users" },
+      })
       .then((item) => {
         const amountNum = parseInt(req.params.amount);
         const newItem = item.filter((i, index) => {
