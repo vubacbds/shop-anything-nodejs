@@ -158,3 +158,7 @@ Content-Type: application/json
     "likes": ["89898782"],
     "users": "6311c98f941617c9ab92fcfe"
 }
+
+
+###
+DELETE http://localhost:5000/reply/delete-reply/632a90348fd3f3864d9b4f02

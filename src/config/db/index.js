@@ -5,7 +5,8 @@ async function connect() {
   try {
     await mongoose
       .connect(
-        process.env.MONGODB_URI || "mongodb://0.0.0.0:27017/nodejs_blog_dev",
+        process.env.MONGODB_URI ||
+          "mongodb+srv://bac:uytIn$100@cluster0.wdl6uvq.mongodb.net/test",
         {
           useNewUrlParser: true,
           useUnifiedTopology: true,
