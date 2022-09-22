@@ -6,10 +6,11 @@ const morgan = require("morgan"); //Nhận biết thông tin các Request //Node
 const handlebars = require("express-handlebars");
 const methodOverride = require("method-override"); //Để Thêm method PUT
 const route = require("./routes");
+const dotenv = require("dotenv");
 var cors = require("cors");
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 //về kết nối database MongoDB
 const db = require("./config/db");
