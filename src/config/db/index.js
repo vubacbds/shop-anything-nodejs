@@ -4,10 +4,13 @@ const dotenv = require("dotenv");
 async function connect() {
   try {
     await mongoose
-      .connect(`${process.env.DATABASE_URL}`, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      })
+      .connect(
+        process.env.MONGODB_URI || "mongodb://localhost:27017/nodejs_blog_dev",
+        {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+        }
+      )
       .then(() => {
         console.log("Kết nối thành công nhé !");
       })
