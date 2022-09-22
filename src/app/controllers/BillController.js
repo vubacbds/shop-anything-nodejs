@@ -1,5 +1,5 @@
-const Bill = require("../models/bill.js");
-const Product = require("../models/product.js");
+const Bill = require("../models/Bill.js");
+const Product = require("../models/Product.js");
 const { mutipleMongooseToObject } = require("../../util/mongoose.js");
 
 class BillController {

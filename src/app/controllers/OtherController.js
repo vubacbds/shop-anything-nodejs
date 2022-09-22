@@ -1,4 +1,4 @@
-const Other = require("../models/other.js");
+const Other = require("../models/Other.js");
 const { mutipleMongooseToObject } = require("../../util/mongoose.js");
 
 class OtherController {

@@ -1,4 +1,4 @@
-const Product = require("../models/product.js");
+const Product = require("../models/Product.js");
 const { mutipleMongooseToObject } = require("../../util/mongoose.js");
 
 class ApiController {

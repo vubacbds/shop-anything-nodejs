@@ -1,4 +1,4 @@
-const product = require("../models/product.js");
+const product = require("../models/Product.js");
 const { mutipleMongooseToObject } = require("../../util/mongoose.js");
 
 class MeController {

@@ -1,4 +1,4 @@
-const Size = require("../models/size.js");
+const Size = require("../models/Size.js");
 const { mutipleMongooseToObject } = require("../../util/mongoose.js");
 
 class SizeController {

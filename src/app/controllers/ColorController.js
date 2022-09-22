@@ -1,4 +1,4 @@
-const Color = require("../models/color.js");
+const Color = require("../models/Color.js");
 const { mutipleMongooseToObject } = require("../../util/mongoose.js");
 
 class ColorController {
