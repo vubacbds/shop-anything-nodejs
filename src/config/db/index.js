@@ -11,8 +11,8 @@ async function connect() {
       .then(() => {
         console.log("Kết nối thành công nhé !");
       })
-      .catch(() => {
-        console.log("Kết nối thất bại rồi T_T");
+      .catch((err) => {
+        console.log("Kết nối thất bại rồi T_T", err);
       });
   } catch (error) {
     console.log("Kết nối MongoDB thất bại! Lỗi hệ thống gì rồi");
