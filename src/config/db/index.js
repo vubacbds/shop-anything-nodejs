@@ -6,7 +6,7 @@ async function connect() {
     await mongoose
       .connect(
         process.env.MONGODB_URI ||
-          "mongodb+srv://bac:uytIn$100@cluster0.wdl6uvq.mongodb.net/test",
+          "mongodb+srv://bac:uytIn$100@cluster0.wdl6uvq.mongodb.net/shop-anything",
         {
           useNewUrlParser: true,
           useUnifiedTopology: true,
