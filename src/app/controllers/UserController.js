@@ -18,8 +18,10 @@ class UserController {
     user.save().then(async (doc) => {
       mailer.sendMail(
         doc.email,
-        "MAIL FROM SHOP",
-        `Xác nhận email của bạn: <a href=${process.env.APP_URL}/user/verify/${doc._id}>Nhấn vào đây</a>`
+        process.env.MAIL_TITLE || "MAIL FROM SHOP",
+        `Xác nhận email của bạn: <a href=${
+          process.env.APP_URL || "http://localhost:3000"
+        }/user/verify/${doc._id}>Nhấn vào đây</a>`
       );
       res.status(201).send(doc);
     });
@@ -27,10 +29,7 @@ class UserController {
 
   //[GET] /user/verify
   async verify(req, res, next) {
-    await User.updateOne(
-      { _id: req.params.userid },
-      { isverify: true, address: "ok" }
-    )
+    await User.updateOne({ _id: req.params.userid }, { isverify: true })
       .then((item) => {
         res.status(200).json(item);
       })
@@ -50,7 +49,7 @@ class UserController {
     )}$${Math.floor(Math.random() * 100000)}`;
     mailer.sendMail(
       req.body.email,
-      "MAIL FROM SHOP",
+      process.env.MAIL_TITLE || "MAIL FROM SHOP",
       `Mật khẩu mới của bạn là: <b style="">${passwordRandom}</b> <p>Bạn cần vào tài khoản để thay đổi lại mật khẩu</p>`
     );
 
@@ -95,7 +94,7 @@ class UserController {
               {
                 userId: user._id,
               },
-              process.env.ACCESS_TOKEN_SECRET,
+              process.env.ACCESS_TOKEN_SECRET || "jwt6688",
               { expiresIn: "1d" }
             );
 

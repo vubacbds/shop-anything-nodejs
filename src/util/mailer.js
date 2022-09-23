@@ -8,8 +8,8 @@ module.exports = {
       //   port: process.env.MAIL_PORT,
       service: "gmail",
       auth: {
-        user: process.env.MAIL_USERNAME,
-        pass: process.env.MAIL_PASSWORD,
+        user: process.env.MAIL_USERNAME || "bac0122000@gmail.com",
+        pass: process.env.MAIL_PASSWORD || "xvfrhpwhvilkbgtz",
       },
       tls: {
         rejectUnauthorized: false,
@@ -17,7 +17,7 @@ module.exports = {
     });
 
     const options = {
-      from: process.env.MAIL_FROM_ADDRESS,
+      from: process.env.MAIL_FROM_ADDRESS || "bac0122000@gmail.com",
       to: to,
       subject: subject,
       html: htmlContent,
