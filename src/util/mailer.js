@@ -9,7 +9,7 @@ module.exports = {
       service: "gmail",
       auth: {
         user: process.env.MAIL_USERNAME || "bac0122000@gmail.com",
-        pass: process.env.MAIL_PASSWORD || "xvfrhpwhvilkbgtz",
+        pass: process.env.MAIL_PASSWORD || "hpftroebeyhkwmhk",
       },
       tls: {
         rejectUnauthorized: false,
