@@ -18,7 +18,7 @@ class UserController {
     user.save().then(async (doc) => {
       mailer.sendMail(
         doc.email,
-        process.env.MAIL_TITLE || "MAIL FROM SHOP",
+        process.env.MAIL_TITLE || "FROM_SHOP_ANYTHING",
         `Xác nhận email của bạn: <a href=${
           process.env.APP_URL || "http://localhost:3000"
         }/user/verify/${doc._id}>Nhấn vào đây</a>`
@@ -49,7 +49,7 @@ class UserController {
     )}$${Math.floor(Math.random() * 100000)}`;
     mailer.sendMail(
       req.body.email,
-      process.env.MAIL_TITLE || "MAIL FROM SHOP",
+      process.env.MAIL_TITLE || "FROM_SHOP_ANYTHING",
       `Mật khẩu mới của bạn là: <b style="">${passwordRandom}</b> <p>Bạn cần vào tài khoản để thay đổi lại mật khẩu</p>`
     );
 

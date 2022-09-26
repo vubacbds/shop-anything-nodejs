@@ -8,7 +8,7 @@ class ApiController {
     await Product.find({})
       .sort([
         ["ghim", "descending"],
-        ["updatedAt", "descending"],
+        ["createdAt", "descending"],
       ])
       .then((item) => {
         res.status(200).json(item);

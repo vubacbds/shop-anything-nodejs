@@ -14,6 +14,8 @@ const Product = new Schema(
     images: [],
     sizes: [],
     colors: [],
+    promotion: { type: Number, default: 0 },
+    promotion_date: { type: Date, default: "" },
     ghim: { type: Number, default: 0 },
     slug: { type: String, slug: "title", unique: true }, //Tạo slug từ trường name,
   },
