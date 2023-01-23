@@ -10,7 +10,7 @@ const dotenv = require("dotenv");
 var cors = require("cors");
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 
 //về kết nối database MongoDB
 const db = require("./config/db");
